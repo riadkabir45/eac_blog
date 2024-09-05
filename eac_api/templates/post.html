@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EAC</title>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            rel="stylesheet">
+        <!-- Custom CSS -->
+        <style>
+        body {
+            background: #4B0082;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #2D004D;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .profile-img {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .btn-profile {
+            background: #9932CC;
+            color: #fff;
+        }
+
+        .btn-profile:hover {
+            background: #8B008B;
+        }
+
+        #my-textarea{
+            overflow: hidden;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+        {% include "nav.html" %}
+
+        <div class="container">
+            <div class="col-md-12 pb-5">
+                <div class="card mb-12">
+                    <div class="card-body row">
+                        <div class="col-md-2">
+                            <img src="{% url  'image' user.username %}"
+                                class="img-fluid rounded-pill mb-3"
+                                alt="Profile Image">
+                        </div>
+                        <div class="col-md-10 align-items-center d-flex">
+                            <h5 class="card-title">{{ request.user.username }}</h5>
+                        </div>
+                        <form method="POST" enctype="multipart/form-data" class="container-fluid">
+
+                        {% csrf_token %}
+                        <div class="form-floating container-fluid">
+                            <textarea class="form-control bg-dark text-light" id="my-textarea"
+                                placeholder="Whats on your mind" name="ptext"
+                                id="floatingTextarea" required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="btn btn-profile m-3">Post</button>
+                        <form>
+                    </div>
+                </div>
+            </div>
+            {% for user in users %}
+            <div class="col-md-12 pb-5">
+                <div class="card mb-12">
+                    <div class="card-body row">
+                        <div class="col-md-2">
+                            <img src="{% url  'image' user.student.username %}"
+                                class="img-fluid rounded-pill mb-3"
+                                alt="Profile Image">
+                        </div>
+                        <div class="col-md-10 align-items-center d-flex">
+                            <h5 class="card-title">{{ user.student.username }}</h5>
+                        </div>
+                        <p class="text-start m-4 border rounded p-3 container-fluid">
+                            {{user.text}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <script>
+        $(document).ready(function() {
+    $('#my-textarea').on('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+});
+    </script>
+        </body>
+    </html>

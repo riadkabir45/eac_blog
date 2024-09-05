@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAC</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: #4B0082;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background: #2D004D;
+            color: #fff;
+            border: none;
+        }
+
+        .badge-moderator {
+            background: #800080;
+            color: #fff;
+        }
+
+        .btn-profile {
+            background: #9932CC;
+            color: #fff;
+        }
+
+        .btn-profile:hover {
+            background: #8B008B;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include "nav.html" %}
+    <div class="container">
+        <h2 class="text-center mb-4">Users</h2>
+        <div class="row">
+            {% for user in users %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <img src="{% url  'image' user.username %}" class="img-fluid mb-3" alt="Profile Image">
+                        <h5 class="card-title">{{ user.username }}</h5>
+                        <p class="card-text">{{ user.subject }} @ {{ user.instution }}</p>
+                        {% if user.is_staff %}
+                        <span class="badge badge-moderator">Moderator</span>
+                        {% endif %}
+                        <a href="{% url  'profiler' user.id %}" class="btn btn-profile btn-block mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+
+</body>
+
+</html>

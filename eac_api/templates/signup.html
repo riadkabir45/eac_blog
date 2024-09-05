@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAC</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: #4B0082;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #2D004D;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .form-control {
+            background: #4B0082;
+            border: none;
+            color: #fff;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #6c757d;
+        }
+        .btn-signup {
+            background: #800080;
+            color: #fff;
+        }
+        .btn-signup:hover {
+            background: #9932CC;
+        }
+    </style>
+    {%  if not msgf %}
+    <style>
+        .alert {
+            display: none;
+        }
+    </style>
+    {% endif %}
+</head>
+<body>
+    {% include "nav.html" %}
+
+<div class="container">
+    <h2 class="text-center mb-4">Sign Up</h2>
+    <div class="alert alert-danger" role="alert">
+        {{ msgf }}
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Confirm Password</label>
+            <input type="password" class="form-control" name="cpassword" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="inputBirthdate">Birthdate</label>
+            <input type="date" class="form-control" name="date" value="2000-01-01">
+        </div>
+        <div class="form-group">
+            <label for="inputHscBatch">HSC Batch</label>
+            <input type="number" class="form-control" name="batch" placeholder="Enter your HSC batch"  min="1900" max="{{ year }}" value="{{ year }}">
+        </div>
+        <div class="form-group">
+            <label for="inputInstitution">Educational Institution</label>
+            <input type="text" class="form-control" name="instution" placeholder="Enter your institution name">
+        </div>
+        <div class="form-group">
+            <label for="inputSubject">Subject</label>
+            <input type="text" class="form-control" name="subject" placeholder="Enter your subject">
+        </div>
+        <div class="form-group">
+            <label for="inputBio">Short Bio</label>
+            <textarea class="form-control" name="bio" rows="3" placeholder="Tell us something about yourself"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="inputProfileImage">Profile Image</label>
+            <input type="file" class="form-control-file" name="img">
+        </div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-signup btn-block">Sign Up</button>
+    </form>
+</div>
+
+</body>
+</html>
+

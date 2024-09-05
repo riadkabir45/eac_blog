@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAC</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: #4B0082;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #2D004D;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .profile-img {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% include "nav.html" %}
+
+<div class="container text-center">
+    <h2 class="mb-4">Profile</h2>
+    <img src="{% url  'image' user.username %}" class="img-fluid rounded-pill pb-4 square-crop" alt="Profile Image">
+    {% if user.name != "" %}
+    <h3>Name: {{user.name}}</h3>
+    {% endif %}
+    <p><strong>Username:</strong> {{user.username}}</p>
+    {% if user.email != "" %}
+    <p><strong>Email:</strong> {{user.email}}</p>
+    {% endif %}
+    {% if user.date != "" %}
+    <p><strong>Birthdate:</strong> {{user.date}}</p>
+    {% endif %}
+    {% if user.batch != "" %}
+    <p><strong>HSC Batch:</strong> {{user.batch}}</p>
+    {% endif %}
+    {% if user.instution != "" %}
+    <p><strong>Educational Institution:</strong> {{user.instution}}</p>
+    {% endif %}
+    {% if user.subject != "" %}
+    <p><strong>Subject:</strong> {{user.subject}}</p>
+    {% endif %}
+    {% if user.bio != "" %}
+    <p><strong>Bio:</strong> {{user.bio}}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
+

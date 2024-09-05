@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: #4B0082;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: #2D004D;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .form-control {
+            background: #4B0082;
+            border: none;
+            color: #fff;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #6c757d;
+        }
+        .btn-login {
+            background: #800080;
+            color: #fff;
+        }
+        .btn-login:hover {
+            background: #9932CC;
+        }
+        .alert {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Login</h2>
+    <div class="alert alert-danger" role="alert">
+        Error message here.
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-login btn-block">Login</button>
+    </form>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+<!-- Common Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Engineers Associations of Chuadanga</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      {% if not request.user.id %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'home' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'signup' %}">Signup</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'profile' %}">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'users' %}">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'post' %}">Posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'logout' %}">Logout</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<!-- Custom CSS -->
+<style>
+    body {
+        background-color: #1d1d2b;
+        color: #eee;
+        font-family: 'Arial', sans-serif;
+    }
+    .container {
+        margin-top: 50px;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #6c757d;
+    }
+    .btn-purple {
+        background-color: #6f42c1;
+        color: #fff;
+    }
+    .btn-purple:hover {
+        background-color: #5a33a5;
+    }
+    .card {
+        background-color: #2a2a3b;
+        border: none;
+        color: #eee;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+        color: #c0c0c0;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #fff;
+    }
+    .msg-box {
+        display: none;
+        margin-top: 15px;
+    }
+</style>
+
