@@ -57,15 +57,15 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="inputName">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter your name">
+            <input type="text" class="form-control" name="name" placeholder="Enter your name" value="{{name}}">
         </div>
         <div class="form-group">
             <label for="inputUsername">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+            <input type="text" class="form-control" name="username" placeholder="Enter your username" value="{{username}}" required>
         </div>
         <div class="form-group">
             <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="Enter your email">
+            <input type="email" class="form-control" name="email" placeholder="Enter your email" value="{{email}}">
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>
@@ -77,7 +77,7 @@
         </div>
         <div class="form-group">
             <label for="inputBirthdate">Birthdate</label>
-            <input type="date" class="form-control" name="date" value="2000-01-01">
+            <input type="date" class="form-control" name="date" value="{{date}}">
         </div>
         <div class="form-group">
             <label for="inputHscBatch">HSC Batch</label>
@@ -85,15 +85,15 @@
         </div>
         <div class="form-group">
             <label for="inputInstitution">Educational Institution</label>
-            <input type="text" class="form-control" name="instution" placeholder="Enter your institution name">
+            <input type="text" class="form-control" name="instution" placeholder="Enter your institution name" value="{{instution}}">
         </div>
         <div class="form-group">
             <label for="inputSubject">Subject</label>
-            <input type="text" class="form-control" name="subject" placeholder="Enter your subject">
+            <input type="text" class="form-control" name="subject" placeholder="Enter your subject" value="{{subject}}">
         </div>
         <div class="form-group">
             <label for="inputBio">Short Bio</label>
-            <textarea class="form-control" name="bio" rows="3" placeholder="Tell us something about yourself"></textarea>
+            <textarea class="form-control" name="bio" rows="3" placeholder="Tell us something about yourself">{{bio}}</textarea>
         </div>
         <div class="form-group">
             <label for="inputProfileImage">Profile Image</label>

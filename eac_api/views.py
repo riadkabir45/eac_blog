@@ -26,13 +26,13 @@ def home(req):
 
 def signup(req):
     date = dt.now().year
+    now = dt.now().strftime('%Y-%m-%d')
     if req.method == 'POST':
         pdata = req.POST
         usname=pdata['username']
-        if Student.objects.get(username=usname) is not None:
+        if Student.objects.filter(username=usname).exists():
             udata = {key: value for key, value in pdata.items()}
             udata['msgf'] = "Username already taken"
-            udata['year'] = date
             return render(req,"signup.html",udata)        
         uname=pdata['name']
         upass=pdata['password']
@@ -49,8 +49,12 @@ def signup(req):
         if upass == cpass:
             conc = Student.objects.create_user(username=usname,password=upass,name=uname,date=udate,batch=ubatch,instution=uins,subject=usub,bio=ubio,image=img)
             conc.save()
-
-    return render(req,"signup.html",{'year':date})
+        else:
+            udata = {key: value for key, value in pdata.items()}
+            udata['msgf'] = "Both password did not match"
+            return render(req,"signup.html",udata)        
+        return redirect(home)
+    return render(req,"signup.html",{'year':date,'date':now})
 
 @login_required(login_url='home')
 def img(req,student_id):
@@ -82,7 +86,9 @@ def post(req):
         utext=pdata['ptext']
         npost = Post(student=req.user,text=utext)
         npost.save()
-    return render(req,"post.html",{'users': Post.objects.all()})
+    posts = list(Post.objects.all())
+    posts.reverse()
+    return render(req,"post.html",{'users': posts})
 
 
 def logout(req):
