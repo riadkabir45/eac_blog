@@ -1,7 +1,8 @@
 <!-- Common Navbar -->
+ <header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Engineers Associations of Chuadanga</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" onclick="naver()" id="toogleNav" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,6 +31,17 @@
     </ul>
   </div>
 </nav>
+ </header>
+ <script>
+  const nav = document.getElementById('navbarNav');
+    function naver(){
+        console.log(nav.classList);
+        if(nav.classList.contains('collapse'))
+        nav.classList.remove('collapse');
+        else
+        nav.classList.add('collapse')
+    }
+ </script>
 
 <!-- Custom CSS -->
 <style>
